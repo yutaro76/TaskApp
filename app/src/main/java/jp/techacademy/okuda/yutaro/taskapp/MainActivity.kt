@@ -9,7 +9,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import io.realm.RealmChangeListener
 import io.realm.Sort
 import android.content.Intent
+import android.widget.SearchView
 import androidx.appcompat.app.AlertDialog
+import io.realm.RealmResults
+import io.realm.kotlin.where
 
 const val EXTRA_TASK = "jp.techacademy.okuda.yutaro.taskapp.TASK"
 
@@ -23,9 +26,33 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mTaskAdapter: TaskAdapter
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+//        filter_button.setOnClickListener {
+//
+////            fun read() : RealmResults<Task> {
+////                return mRealm.where(Task::class.java).equalTo()
+////            }
+//        fun filter() {
+//
+//        val categoryRealmResults = mRealm.where(Task::class.java).equalTo("category", "search")
+//
+//        mTaskAdapter.mTaskList = mRealm.copyFromRealm(categoryRealmResults)
+//
+//        listView1.adapter = mTaskAdapter
+//
+//        mTaskAdapter.notifyDataSetChanged()
+//        }
+//
+//
+//            filter()
+//
+//        }
+
 
         fab.setOnClickListener { view ->
             val intent = Intent(this, InputActivity::class.java)
