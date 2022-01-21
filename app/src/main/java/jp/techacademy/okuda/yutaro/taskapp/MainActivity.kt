@@ -32,26 +32,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        filter_button.setOnClickListener {
-//
-////            fun read() : RealmResults<Task> {
-////                return mRealm.where(Task::class.java).equalTo()
-////            }
-//        fun filter() {
-//
-//        val categoryRealmResults = mRealm.where(Task::class.java).equalTo("category", "search")
-//
-//        mTaskAdapter.mTaskList = mRealm.copyFromRealm(categoryRealmResults)
-//
-//        listView1.adapter = mTaskAdapter
-//
-//        mTaskAdapter.notifyDataSetChanged()
-//        }
-//
-//
-//            filter()
-//
-//        }
+        fun filter() {
+
+            val categoryRealmResults = mRealm.where(Task::class.java).equalTo("category", search.query.toString()).findAll()
+
+            mTaskAdapter.mTaskList = mRealm.copyFromRealm(categoryRealmResults)
+
+            listView1.adapter = mTaskAdapter
+
+            mTaskAdapter.notifyDataSetChanged()
+
+        }
+
+        filter_button.setOnClickListener{
+            if (search.query.toString() != "") {
+                filter()
+            }else{
+                reloadListView()
+            }
+                    }
 
 
         fab.setOnClickListener { view ->
